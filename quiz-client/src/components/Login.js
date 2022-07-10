@@ -20,6 +20,15 @@ export default function Login() {
         handleInputChange
     } = useForm(getFreshModel);
 
+    const login = (e) => {
+        e.preventDefault();
+        if(validate()) {
+            console.log(values);
+            // console.log(errors);
+        }
+  
+    }
+
     useEffect(() => {
     }, [])
 
@@ -47,14 +56,15 @@ export default function Login() {
                             width: '90%'
                         }
                     }}>
-                        <form noValidate autoComplete="off" >
+                        <form noValidate autoComplete="off" onSubmit={login} >
                             <TextField
                                 label="Email"
                                 name="email"
                                 value={values.email}
                                 onChange={handleInputChange}
-                                variant="outlined"
-                                {...(errors.email && { error: true, helperText: errors.email })} />
+                                variant="outlined"                                
+                                {...(errors.email && { error: true, helperText: errors.email })} 
+                                />
                             <TextField
                                 label="Name"
                                 name="name"
